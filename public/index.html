@@ -8,14 +8,34 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="__alloy_style.css" rel="stylesheet">
 </head>
+        <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlParam = urlParams.get('https');
+            
+            if (urlParam && urlParam.startsWith('https://')) {
+                const url = decodeURIComponent(urlParam);
+                document.getElementById('searchBox').value = url;
+                document.getElementById('searchForm').submit();
+            }
+        }
+    </script>
 <body >
 <div class="container">
 <p>AlloyProxy</p>
+
+    <form id="searchForm" action="/session/" method="get">
+        <input type="text" id="searchBox" name="search" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+
+<!--
 <form class="url" method="POST" action="/session/">
     <input placeholder="https://www.google.com" name="url" id="iurl" type="text">
     <button type="submit" id="btn">Go!</button>
     <a href="https://github.com/titaniumnetwork-dev/alloyproxy">Fork on GitHub!</a>
 </form>
+    -->
 </div>
 </div>
 </body>
